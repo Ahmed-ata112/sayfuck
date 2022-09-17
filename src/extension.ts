@@ -2,13 +2,13 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
-
 export async function command(context: vscode.ExtensionContext) {
 	// get the language of the active editor and log it to the console
 	const editor = vscode.window.activeTextEditor;
 	if (editor) {
 		const document = editor.document;
-		const languageId = document.languageId;
+		const capitalize = (s: string) => (s && s[0].toUpperCase() + s.slice(1)) || "";
+		const languageId =  capitalize(document.languageId) ;
 		vscode.window.showInformationMessage(`Fuck ${languageId}!`);
 	}
 
