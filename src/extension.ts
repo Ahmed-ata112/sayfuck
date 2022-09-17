@@ -1,7 +1,12 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+ 
 
+let count = 0;
+
+
+// this method is called when your extension is activated
 export async function command(context: vscode.ExtensionContext) {
 	// get the language of the active editor and log it to the console
 	const editor = vscode.window.activeTextEditor;
@@ -9,8 +14,16 @@ export async function command(context: vscode.ExtensionContext) {
 		const document = editor.document;
 		const capitalize = (s: string) => (s && s[0].toUpperCase() + s.slice(1)) || "";
 		const languageId =  capitalize(document.languageId) ;
-		vscode.window.showInformationMessage(`Fuck ${languageId}!`);
+		let emojis = "😡".repeat(count++);
+		if(count > 5){
+			count = 0;
+			vscode.window.showInformationMessage(`calm down my lil cat`);
+
+		}else{
+		vscode.window.showInformationMessage(`Fuck ${languageId}! ${emojis}`);
 	}
+	} 
+
 
   }
 
